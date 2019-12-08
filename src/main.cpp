@@ -44,10 +44,7 @@ int main(int argc, char **argv) {
     std::cout << "18.05.2019 - Berlin - V1.00" << std::endl;
     std::cout << "Use: help [command]" << std::endl;
     
-    
-    
-    
-    
+
     my_graphs::graph_base::exit_behaviour = my_graphs::MG_EXIT_SOFT;
     
     the_utility_tool.set_seed(10);
@@ -68,17 +65,10 @@ int main(int argc, char **argv) {
     }
     
     
-    
-    
-    
-    
-    
     //Readline 
     char *buf;
     read_history(".graph_history");
     rl_attempted_completion_function = completer;
-    
-    //return 0;
     
     while(true){
     
