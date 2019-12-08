@@ -23,7 +23,7 @@ extern int actual_graph_type;
 my_graphs::graph_utilities the_utility_tool;
 
 
-
+//It creates a new object graph
 my_graphs::graph_base *new_graph_poliform(std::string kind)
 {
     if(kind == "graph_matrix") return new my_graphs::graph_matrix;
@@ -328,8 +328,9 @@ void s_new_graph(std::vector<std::string> &commands, std::map<std::string, std::
         std::cout << "Wrong number of parameters!!!" << std::endl;
         return;
     }
+    std::string actual_graph_name_old = actual_graph_name;
     actual_graph_name = commands[1];
-    
+    /*
     try{
         A.at(actual_graph_name);
     }
@@ -339,12 +340,20 @@ void s_new_graph(std::vector<std::string> &commands, std::map<std::string, std::
     
         //if(A[actual_graph_name] == nullptr) A.erase(actual_graph_name);
     }
+    */
     
+    if(A.count(actual_graph_name)){
+        std::cout << "The graph \"" << actual_graph_name << "\" already exist!" << std::endl;
+        actual_graph_name = actual_graph_name_old;
+    }
+    else{
+        A.insert(std::make_pair(actual_graph_name, new_graph_poliform(graph_types[actual_graph_type])));
+    }
     
     return;
 }
 
-void is_link(std::vector<std::string> &commands, my_graphs::graph_matrix &IN)
+void g_is_link(std::vector<std::string> &commands, my_graphs::graph_base &IN)
 {
     if(commands.size() != 3){
         std::cout << "Wrong number of parameters!!!" << std::endl;
@@ -372,7 +381,7 @@ void is_link(std::vector<std::string> &commands, my_graphs::graph_matrix &IN)
 }
 
 
-void delete_link(std::vector<std::string> &commands, my_graphs::graph_matrix &IN)
+void g_delete_link(std::vector<std::string> &commands, my_graphs::graph_base &IN)
 {
     if( (commands.size() != 3) && (commands.size() != 4) ){
         std::cout << "Wrong number of parameters!!!" << std::endl;

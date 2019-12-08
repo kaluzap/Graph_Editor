@@ -66,7 +66,7 @@ int main(int argc, char **argv) {
     }
     
     
-    //Readline 
+    //Readline staff 
     char *buf;
     read_history(".graph_history");
     rl_attempted_completion_function = completer;
@@ -98,11 +98,16 @@ int main(int argc, char **argv) {
             else if(commands[0] == "show"       ) u_show(commands, *the_graphs[actual_graph_name], actual_graph_name);
             else if(commands[0] == "new_graph"  ) s_new_graph(commands, the_graphs, actual_graph_name);
             else if(commands[0] == "system"     ) s_system(commands);
+            else if(commands[0] == "delete_link") g_delete_link(commands, *the_graphs[actual_graph_name]);
+            else if(commands[0] == "is_link"    ) g_is_link(commands, *the_graphs[actual_graph_name]);
+            else if(commands[0] == "clean") (*the_graphs[actual_graph_name]).clean();
+            
+            else if(commands[0] == "new_graph") s_new_graph(commands, the_graphs, actual_graph_name);
+            
             /*
-            else if(commands[0] == "delete_link") delete_link(commands, A[actual_graph_name]);
-            else if(commands[0] == "clean") A[actual_graph_name].clean();
-            else if(commands[0] == "is_link") is_link(commands, A[actual_graph_name]);
-            else if(commands[0] == "new_graph") new_graph(commands, A, actual_graph_name);
+            
+            
+            
             else if(commands[0] == "delete_graph") delete_graph(commands, A, actual_graph_name);
             else if(commands[0] == "ls") ls_graphs(A);
             else if(commands[0] == "help") s_help(commands);
