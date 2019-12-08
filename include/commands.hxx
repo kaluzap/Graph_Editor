@@ -11,7 +11,7 @@ my_graphs::graph_base *new_graph_poliform(std::string kind);
 
 
 //Functions related to graph_utilities class
-void u_line_graph(std::vector<std::string> &commands, std::map<std::string, my_graphs::graph_base> &A, std::string &actual_graph_name);
+void u_line_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name);
 void u_load_graph(std::vector<std::string> &commands, my_graphs::graph_base &A);
 void u_list_labels(std::vector<std::string> &commands);
 void u_save_graph(std::vector<std::string> &commands, my_graphs::graph_base &A, std::string actual_graph_name);
@@ -31,10 +31,10 @@ void g_is_link(std::vector<std::string> &commands, my_graphs::graph_base &IN);
 //Functions related to the system
 void s_system(std::vector<std::string> &commands);
 void s_help(std::vector<std::string> &commands);
+void s_ls_graphs(std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A);
 void s_new_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name);
-void ls_graphs(std::map<std::string, my_graphs::graph_base> &A);
-void delete_graph(std::vector<std::string> &commands, std::map<std::string, my_graphs::graph_matrix> &A, std::string &actual_graph_name);
-void copy_graph(std::vector<std::string> &commands, std::map<std::string, my_graphs::graph_matrix> &A);
+void s_delete_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name);
+void s_copy_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name);
 
 
 

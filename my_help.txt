@@ -1,0 +1,23 @@
+
+Graph Designer
+
+Commands:
+add_link i j [X]: it adds a link from i to j, and, j to i if you add X.
+delete_link i j [X]: it deletes the existing link from i to j, and, j to i if you add X.
+is_link i j: it returns if the link from i to j exists.
+resize N: it changes the size of the graph and removes all the links
+clean: it removes all the links
+help: this help
+new_graph name: it creates new graph "name"
+delete_graph name: it deletes the graph "name"
+copy A B:
+ls:
+matrix:
+info:
+exit: 
+eigenvalues A/L/T:  it calculates the eigenvalues of the adjacency matrix (A), normalized laplacian (L) or laplacian (T).
+add_path n1 n2 ... nN [X]: it creates a path through these nodes. With X the path is created with double connections.
+show: it shows the graph using feh and dot. It creates name.png and name.dot.
+
+
+

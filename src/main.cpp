@@ -53,6 +53,7 @@ int main(int argc, char **argv) {
     std::string actual_graph_name = "G0";
     
     //Map with the graphs of this session
+    //We use smart pointers because we want to use different derivated class
     std::map<std::string, std::unique_ptr<my_graphs::graph_base>> the_graphs;
     
     //the_graphs.insert(std::pair<std::string, std::unique_ptr<my_graphs::graph_base>>(actual_graph_name, new_graph_poliform(graph_types[actual_graph_type])));
@@ -91,35 +92,42 @@ int main(int argc, char **argv) {
         
         if(commands.size()){
             if(commands[0] == "exit") break;
+            
+            
             else if(commands[0] == "add_link"   ) g_add_link(commands, *the_graphs[actual_graph_name]);
             else if(commands[0] == "resize"     ) g_resize(commands, *the_graphs[actual_graph_name]);
+            else if(commands[0] == "delete_link") g_delete_link(commands, *the_graphs[actual_graph_name]);
+            else if(commands[0] == "is_link"    ) g_is_link(commands, *the_graphs[actual_graph_name]);
+            else if(commands[0] == "clean"      ) (*the_graphs[actual_graph_name]).clean();
+            
+            
             else if(commands[0] == "info"       ) the_utility_tool.print_info(*the_graphs[actual_graph_name]);
             else if(commands[0] == "matrix"     ) the_utility_tool.print_matrix(*the_graphs[actual_graph_name]);
             else if(commands[0] == "show"       ) u_show(commands, *the_graphs[actual_graph_name], actual_graph_name);
+            else if(commands[0] == "eigenvalues") u_eigenvalues(commands, *the_graphs[actual_graph_name]);
+            else if(commands[0] == "line_graph")  u_line_graph(commands, the_graphs, actual_graph_name);
+            
             else if(commands[0] == "new_graph"  ) s_new_graph(commands, the_graphs, actual_graph_name);
             else if(commands[0] == "system"     ) s_system(commands);
-            else if(commands[0] == "delete_link") g_delete_link(commands, *the_graphs[actual_graph_name]);
-            else if(commands[0] == "is_link"    ) g_is_link(commands, *the_graphs[actual_graph_name]);
-            else if(commands[0] == "clean") (*the_graphs[actual_graph_name]).clean();
+            else if(commands[0]== "delete_graph") s_delete_graph(commands, the_graphs, actual_graph_name);
+            else if(commands[0] == "ls"         ) s_ls_graphs(the_graphs);
+            else if(commands[0] == "help"       ) s_help(commands);
+            else if(commands[0] == "copy"       ) s_copy_graph(commands, the_graphs, actual_graph_name);
+
             
-            else if(commands[0] == "new_graph") s_new_graph(commands, the_graphs, actual_graph_name);
+            
+            
             
             /*
             
-            
-            
-            else if(commands[0] == "delete_graph") delete_graph(commands, A, actual_graph_name);
-            else if(commands[0] == "ls") ls_graphs(A);
-            else if(commands[0] == "help") s_help(commands);
-            else if(commands[0] == "copy") copy_graph(commands, A);
-            else if(commands[0] == "eigenvalues") u_eigenvalues(commands, A[actual_graph_name]);
             else if(commands[0] == "add_path") g_add_path(commands, A[actual_graph_name]);
             else if(commands[0] == "delete_path") g_delete_path(commands, A[actual_graph_name]);
-            else if(commands[0] == "show") u_show(commands, A[actual_graph_name], actual_graph_name);
             else if(commands[0] == "save") u_save_graph(commands, A[actual_graph_name], actual_graph_name);
             else if(commands[0] == "list_labels") u_list_labels(commands);
             else if(commands[0] == "load") u_load_graph(commands, A[actual_graph_name]);
-            else if(commands[0] == "line_graph") u_line_graph(commands, A, actual_graph_name);*/
+            */
+            
+            
             else std::cout << "unknown command" << std::endl;
         }
     }

@@ -31,7 +31,7 @@ my_graphs::graph_base *new_graph_poliform(std::string kind)
 }
 
 
-void u_line_graph(std::vector<std::string> &commands, std::map<std::string, my_graphs::graph_matrix> &A, std::string &actual_graph_name)
+void u_line_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name)
 {
     if(commands.size() != 3){
         std::cout << "Wrong number of parameters!!!" << std::endl;
@@ -43,9 +43,20 @@ void u_line_graph(std::vector<std::string> &commands, std::map<std::string, my_g
         return;
     }
     
-    the_utility_tool.line_graph(A[commands[1]], A[commands[2]]);
+    if(A.count(commands[1]) && A.count(commands[2]) ){
+        
+        the_utility_tool.line_graph(*A[commands[1]], *A[commands[2]]);
     
-    actual_graph_name = commands[2];
+        actual_graph_name = commands[2];
+
+        
+    }
+    else{
+        std::cout << "At least one graph does not exist." << std::endl;
+    }
+    
+    
+    
     
     return;
 }
@@ -229,7 +240,7 @@ void g_add_path(std::vector<std::string> &commands, my_graphs::graph_matrix &A)
 }
 
 
-void u_eigenvalues(std::vector<std::string> &commands, my_graphs::graph_matrix &A)
+void u_eigenvalues(std::vector<std::string> &commands, my_graphs::graph_base &A)
 {
     if(commands.size() != 2){
         std::cout << "Wrong number of parameters!!!" << std::endl;
@@ -282,21 +293,33 @@ void s_help(std::vector<std::string> &commands)
 }
 
 
-void copy_graph(std::vector<std::string> &commands, std::map<std::string, my_graphs::graph_matrix> &A)
+void s_copy_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name)
 {
     if(commands.size() != 3){
         std::cout << "Wrong number of parameters!!!" << std::endl;
         return;
     }      
     
-    A[commands[2]] = A[commands[1]];
+    if( commands[2] == commands[1] ){
+        std::cout << "Copy to myself?... OK" << std::endl;
+        return;
+    }
     
-    std::cout << "The graph " << commands[2] << " is now equal to " << commands[1] << std::endl;
+    if(A.count(commands[1]) && A.count(commands[2]) ){
+        //COPY OPERATOR IS MISSING!!
+        *A[commands[2]] = *A[commands[1]];
+        std::cout << "The copy operator is missing!!!!" << std::endl;
+    }
+    else{
+        std::cout << "I cannot copy. At least one graph does not exist!" << std::endl;
+    }
+    
+    return;
 }
 
 
 
-void delete_graph(std::vector<std::string> &commands, std::map<std::string, my_graphs::graph_matrix> &A, std::string &actual_graph_name)
+void s_delete_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name)
 {
     if(commands.size() != 2){
         std::cout << "Wrong number of parameters!!!" << std::endl;
@@ -314,10 +337,10 @@ void delete_graph(std::vector<std::string> &commands, std::map<std::string, my_g
     std::cout << "The graph " << commands[1] << " has been deleted." << std::endl;
 }
 
-void ls_graphs(std::map<std::string, my_graphs::graph_matrix> &A)
+void s_ls_graphs(std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A)
 {
     for(auto it = A.begin(); it != A.end(); it++){
-        std::cout << it->first << "\t\t" << it->second.nodes() << "\t" << it->second.links() << std::endl;
+        std::cout << it->first << "\t\t" << (*(it->second)).nodes() /*<< "\t" << it->second.links()*/ << std::endl;
     }
     return;
 }
@@ -330,21 +353,10 @@ void s_new_graph(std::vector<std::string> &commands, std::map<std::string, std::
     }
     std::string actual_graph_name_old = actual_graph_name;
     actual_graph_name = commands[1];
-    /*
-    try{
-        A.at(actual_graph_name);
-    }
-    catch(const std::out_of_range& oor){
-        
-        A.insert(std::make_pair(actual_graph_name, new_graph_poliform(graph_types[actual_graph_type])));
-    
-        //if(A[actual_graph_name] == nullptr) A.erase(actual_graph_name);
-    }
-    */
     
     if(A.count(actual_graph_name)){
         std::cout << "The graph \"" << actual_graph_name << "\" already exist!" << std::endl;
-        actual_graph_name = actual_graph_name_old;
+        //actual_graph_name = actual_graph_name_old;
     }
     else{
         A.insert(std::make_pair(actual_graph_name, new_graph_poliform(graph_types[actual_graph_type])));
