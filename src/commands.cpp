@@ -54,16 +54,13 @@ void u_line_graph(std::vector<std::string> &commands, std::map<std::string, std:
     else{
         std::cout << "At least one graph does not exist." << std::endl;
     }
-    
-    
-    
-    
+
     return;
 }
 
 
 
-void u_load_graph(std::vector<std::string> &commands, my_graphs::graph_matrix &A)
+void u_load_graph(std::vector<std::string> &commands, my_graphs::graph_base &A)
 {
     if(commands.size() != 3){
         std::cout << "Wrong number of parameters!!!" << std::endl;
@@ -93,7 +90,7 @@ void u_list_labels(std::vector<std::string> &commands)
 }
 
 
-void u_save_graph(std::vector<std::string> &commands, my_graphs::graph_matrix &A, std::string actual_graph_name)
+void u_save_graph(std::vector<std::string> &commands, my_graphs::graph_base &A, std::string actual_graph_name)
 {
     
     std::string label;
@@ -153,7 +150,7 @@ void u_show(std::vector<std::string> &commands, my_graphs::graph_base &A, std::s
 
 
 
-void g_delete_path(std::vector<std::string> &commands, my_graphs::graph_matrix &A)
+void g_delete_path(std::vector<std::string> &commands, my_graphs::graph_base &A)
 {
     if(commands.size() < 3){
         std::cout << "Wrong number of parameters!!!" << std::endl;
@@ -197,7 +194,7 @@ void g_delete_path(std::vector<std::string> &commands, my_graphs::graph_matrix &
 
 
 
-void g_add_path(std::vector<std::string> &commands, my_graphs::graph_matrix &A)
+void g_add_path(std::vector<std::string> &commands, my_graphs::graph_base &A)
 {
     if(commands.size() < 3){
         std::cout << "Wrong number of parameters!!!" << std::endl;

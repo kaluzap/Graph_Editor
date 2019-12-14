@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
     }
     
     
-    //Readline staff 
+    //Readline stuff 
     char *buf;
     read_history(".graph_history");
     rl_attempted_completion_function = completer;
@@ -99,13 +99,18 @@ int main(int argc, char **argv) {
             else if(commands[0] == "delete_link") g_delete_link(commands, *the_graphs[actual_graph_name]);
             else if(commands[0] == "is_link"    ) g_is_link(commands, *the_graphs[actual_graph_name]);
             else if(commands[0] == "clean"      ) (*the_graphs[actual_graph_name]).clean();
+            else if(commands[0] == "add_path"   ) g_add_path(commands, *the_graphs[actual_graph_name]);
+            else if(commands[0] == "delete_path") g_delete_path(commands, *the_graphs[actual_graph_name]);
             
             
             else if(commands[0] == "info"       ) the_utility_tool.print_info(*the_graphs[actual_graph_name]);
             else if(commands[0] == "matrix"     ) the_utility_tool.print_matrix(*the_graphs[actual_graph_name]);
             else if(commands[0] == "show"       ) u_show(commands, *the_graphs[actual_graph_name], actual_graph_name);
             else if(commands[0] == "eigenvalues") u_eigenvalues(commands, *the_graphs[actual_graph_name]);
-            else if(commands[0] == "line_graph")  u_line_graph(commands, the_graphs, actual_graph_name);
+            else if(commands[0] == "line_graph" ) u_line_graph(commands, the_graphs, actual_graph_name);
+            else if(commands[0] == "list_labels") u_list_labels(commands);
+            else if(commands[0] == "save"       ) u_save_graph(commands, *the_graphs[actual_graph_name], actual_graph_name);
+            else if(commands[0] == "load"       ) u_load_graph(commands, *the_graphs[actual_graph_name]);
             
             else if(commands[0] == "new_graph"  ) s_new_graph(commands, the_graphs, actual_graph_name);
             else if(commands[0] == "system"     ) s_system(commands);
@@ -114,20 +119,6 @@ int main(int argc, char **argv) {
             else if(commands[0] == "help"       ) s_help(commands);
             else if(commands[0] == "copy"       ) s_copy_graph(commands, the_graphs, actual_graph_name);
 
-            
-            
-            
-            
-            /*
-            
-            else if(commands[0] == "add_path") g_add_path(commands, A[actual_graph_name]);
-            else if(commands[0] == "delete_path") g_delete_path(commands, A[actual_graph_name]);
-            else if(commands[0] == "save") u_save_graph(commands, A[actual_graph_name], actual_graph_name);
-            else if(commands[0] == "list_labels") u_list_labels(commands);
-            else if(commands[0] == "load") u_load_graph(commands, A[actual_graph_name]);
-            */
-            
-            
             else std::cout << "unknown command" << std::endl;
         }
     }
