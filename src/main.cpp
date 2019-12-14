@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
     //Presentation
     std::cout << "Interactive graph designer!" << std::endl;
     std::cout << "18.05.2019 - Berlin - V1.00" << std::endl;
-    std::cout << "Use: help [command]" << std::endl;
+    std::cout << "Use: help {command}" << std::endl;
     
 
     my_graphs::graph_base::exit_behaviour = my_graphs::MG_EXIT_SOFT;
@@ -93,7 +93,6 @@ int main(int argc, char **argv) {
         if(commands.size()){
             if(commands[0] == "exit") break;
             
-            
             else if(commands[0] == "add_link"   ) g_add_link(commands, *the_graphs[actual_graph_name]);
             else if(commands[0] == "resize"     ) g_resize(commands, *the_graphs[actual_graph_name]);
             else if(commands[0] == "delete_link") g_delete_link(commands, *the_graphs[actual_graph_name]);
@@ -101,7 +100,6 @@ int main(int argc, char **argv) {
             else if(commands[0] == "clean"      ) (*the_graphs[actual_graph_name]).clean();
             else if(commands[0] == "add_path"   ) g_add_path(commands, *the_graphs[actual_graph_name]);
             else if(commands[0] == "delete_path") g_delete_path(commands, *the_graphs[actual_graph_name]);
-            
             
             else if(commands[0] == "info"       ) the_utility_tool.print_info(*the_graphs[actual_graph_name]);
             else if(commands[0] == "matrix"     ) the_utility_tool.print_matrix(*the_graphs[actual_graph_name]);
