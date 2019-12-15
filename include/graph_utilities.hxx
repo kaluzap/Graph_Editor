@@ -1,13 +1,14 @@
-#include "graph.hxx"
+#include "graph_base.hxx"
 #include <vector>
 #include <complex>
 #include <random>
 
 
-#ifndef MY_GRAPH_UTILITIES_ARE_VERY_NICE
-#define MY_GRAPH_UTILITIES_ARE_VERY_NICE
 
 namespace my_graphs{
+
+    #ifndef MY_GRAPH_UTILITIES_ARE_VERY_NICE
+    #define MY_GRAPH_UTILITIES_ARE_VERY_NICE
 
     class graph_utilities{
         public:
@@ -39,6 +40,8 @@ namespace my_graphs{
             
             bool started_generator;
     };
+
+    #endif
 }
 
-#endif
+
