@@ -3,7 +3,7 @@
 #include <map>
 #include <memory>
 
-#include "graph.hxx"
+#include "graph_base.hxx"
 #include "graph_utilities.hxx"
 
 //General purpose
