@@ -45,6 +45,8 @@ The parameters between [] are optional.
 
 ### System commands
 
+***change_class** {kind*}: change the derivad graph class.
+
 ***copy** {A} {B}*: copy the graph A in B.
 
 ***delete_graph** {name}*: delete the graph "name".
@@ -56,5 +58,7 @@ The parameters between [] are optional.
 ***ls***: show the list of graphs in the current session.
 
 ***new_graph** {name}*: it creates new graph "name" or change the current graph to it.
+
+***show_class***: return the actual graph class.
 
 ***system** {command}*: execute the command.

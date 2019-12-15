@@ -12,6 +12,7 @@
 #include "commands.hxx"
 #include "graph_base.hxx"
 #include "graph_matrix.hxx"
+#include "graph_list.hxx"
 
 
 
@@ -28,7 +29,27 @@ my_graphs::graph_utilities the_utility_tool;
 my_graphs::graph_base *new_graph_poliform(std::string kind)
 {
     if(kind == "graph_matrix") return new my_graphs::graph_matrix;
+    if(kind == "graph_list") return new my_graphs::graph_list;
     return nullptr;
+}
+
+void s_show_class(void)
+{
+    std::cout << "You use the graph class: \"" << graph_types[actual_graph_type] << "\"" << std::endl;
+    return;
+}
+
+
+void s_change_class(std::vector<std::string> &commands)
+{
+    if(commands.size() != 2){
+        std::cout << "Wrong number of parameters!!!" << std::endl;
+        return;
+    }
+    if(commands[1] == "graph_matrix") actual_graph_type = 0;
+    else if(commands[1] == "graph_list") actual_graph_type = 1;
+    else actual_graph_type = 0;
+    return;
 }
 
 

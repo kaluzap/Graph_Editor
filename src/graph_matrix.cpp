@@ -1,4 +1,4 @@
-#include "graph.hxx"
+#include "graph_matrix.hxx"
 #include <iostream>
 #include <cstdlib>
 

@@ -22,10 +22,10 @@
 
 //List of commands used by readline
 std::vector<std::string> vocabulary{"exit", "resize", "matrix", "add_link", "info", "delete_link", "clean", "is_link", "new_graph",                 
-                                    "delete_graph", "ls", "help", "copy", "eigenvalues", "add_path", "delete_path", "show", "system", "save", "list_labels", "load", "line_graph"};
+                                    "delete_graph", "ls", "help", "copy", "eigenvalues", "add_path", "delete_path", "show", "system", "save", "list_labels", "load", "line_graph", "change_class", "show_class"};
 
-//List of derivated graphs
-std::vector<std::string> graph_types{"graph_matrix"};
+//List of derived graphs
+std::vector<std::string> graph_types{"graph_matrix", "graph_list"};
 int actual_graph_type = 0;
 
                                     
@@ -117,6 +117,8 @@ int main(int argc, char **argv) {
             else if(commands[0] == "ls"         ) s_ls_graphs(the_graphs);
             else if(commands[0] == "help"       ) s_help(commands);
             else if(commands[0] == "copy"       ) s_copy_graph(commands, the_graphs, actual_graph_name);
+            else if(commands[0] == "show_class" ) s_show_class();
+            else if(commands[0] =="change_class") s_change_class(commands);
 
             else std::cout << "unknown command" << std::endl;
         }
@@ -126,6 +128,7 @@ int main(int argc, char **argv) {
     rl_clear_history();
     return 0;
 }
+
 
 
 

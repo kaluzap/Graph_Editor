@@ -35,6 +35,7 @@ void s_ls_graphs(std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &
 void s_new_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name);
 void s_delete_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name);
 void s_copy_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name);
-
+void s_show_class(void);
+void s_change_class(std::vector<std::string> &commands);
 
 
