@@ -1,4 +1,4 @@
-#include "graph.hxx"
+#include "graph_base.hxx"
 
 namespace my_graphs{
 
