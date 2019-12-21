@@ -11,9 +11,7 @@
 #include "graph_utilities.hxx"
 #include "commands.hxx"
 #include "graph_base.hxx"
-#include "graph_matrix.hxx"
-#include "graph_list.hxx"
-
+#include "create_graph.hxx"
 
 
 //Variables from main.cpp
@@ -24,14 +22,6 @@ extern int actual_graph_type;
 //Utilities here
 my_graphs::graph_utilities the_utility_tool;
 
-
-//It creates a new object graph
-my_graphs::graph_base *new_graph_poliform(std::string kind)
-{
-    if(kind == "graph_matrix") return new my_graphs::graph_matrix;
-    if(kind == "graph_list") return new my_graphs::graph_list;
-    return nullptr;
-}
 
 void s_show_class(void)
 {

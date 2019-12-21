@@ -6,9 +6,6 @@
 #include "graph_base.hxx"
 #include "graph_utilities.hxx"
 
-//General purpose
-my_graphs::graph_base *new_graph_poliform(std::string kind);
-
 
 //Functions related to graph_utilities class
 void u_line_graph(std::vector<std::string> &commands, std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A, std::string &actual_graph_name);

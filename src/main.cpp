@@ -10,9 +10,8 @@
 
 #include "commands.hxx"
 #include "graph_base.hxx"
-#include "graph_matrix.hxx"
 #include "graph_utilities.hxx"
-
+#include "create_graph.hxx"
 
 /*
  * A way to compile it
