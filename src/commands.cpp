@@ -315,9 +315,7 @@ void s_copy_graph(std::vector<std::string> &commands, std::map<std::string, std:
     }
     
     if(A.count(commands[1]) && A.count(commands[2]) ){
-        //COPY OPERATOR IS MISSING!!
-        *A[commands[2]] = *A[commands[1]];
-        std::cout << "The copy operator is missing!!!!" << std::endl;
+        my_graphs::copy_graphs(*A[commands[2]], *A[commands[1]]);
     }
     else{
         std::cout << "I cannot copy. At least one graph does not exist!" << std::endl;

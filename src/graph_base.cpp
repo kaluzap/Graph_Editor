@@ -7,4 +7,14 @@ namespace my_graphs{
     
     graph_base::~graph_base(){}
 
+    void copy_graphs(class graph_base &out, class graph_base &in)
+    {
+        if(out.nodes() != in.nodes()) out.resize(in.nodes());
+        
+        for(int i=0; i < in.nodes(); i++){
+            for(int j=0; j < in.nodes(); j++){
+                if(in.is_link(i,j)) out.add_link(i,j);
+            }
+        }
+    }
 }

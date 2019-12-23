@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
     
     //Presentation
     std::cout << "Interactive graph designer!" << std::endl;
-    std::cout << "18.05.2019 - Berlin - V1.00" << std::endl;
+    std::cout << "23.12.2019 - Berlin - V2.00" << std::endl;
     std::cout << "Use: help {command}" << std::endl;
     
 

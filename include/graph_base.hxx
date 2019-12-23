@@ -35,8 +35,12 @@ namespace my_graphs{
             
             static int exit_behaviour;
             static int max_number_of_nodes;
+            
+             
     };
     
+    
+    void copy_graphs(class graph_base &out, class graph_base &in);
     #endif
 }
 
