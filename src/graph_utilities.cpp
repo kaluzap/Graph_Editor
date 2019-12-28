@@ -4,7 +4,7 @@
 #include <string>
 #include <algorithm>
 #include "graph_utilities.hxx"
-#include "graph.hxx"
+#include "graph_base.hxx"
 #include "DGEEV.hxx"
 
 namespace my_graphs{

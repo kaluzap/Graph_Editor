@@ -137,6 +137,24 @@ namespace my_graphs{
         }
         return A[in_j][in_i];
     }
+    
+    int graph_matrix::add_node()
+    {
+        int old_size = A.size();
+        for(int i=0; i < old_size; i++) A[i].resize(old_size + 1, 0);
+        std::vector<int> temp(old_size + 1, 0);
+        A.resize(old_size + 1, temp); 
+        
+        in_degrees.resize(old_size + 1, 0);
+        out_degrees.resize(old_size + 1, 0);
+        
+        return A.size();
+    }
+    
+    int graph_matrix::delete_node(int index)
+    {
+        return 0;
+    }
 
     
     graph_matrix::~graph_matrix()
