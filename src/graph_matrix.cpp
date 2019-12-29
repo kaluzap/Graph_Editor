@@ -153,7 +153,22 @@ namespace my_graphs{
     
     int graph_matrix::delete_node(int index)
     {
-        return 0;
+        if( (index < 0) || (index >= A.size()) ){
+            std::cout << "Error in graph_matrix::delete_node(i): index range problem." << std::endl;
+            std::cout << "It muss be: 0 <= (i = " << index << ") < " << A.size() << std::endl;
+            if(exit_behaviour == MG_EXIT_STRONG){
+                std::exit(0);
+            }
+            return MG_UNSUCCESS;
+        }
+        
+        for(int i=0; i < A.size(); i++) A[i].erase(A[i].begin() + index);
+        A.erase(A.begin() + index);
+        
+        in_degrees.erase(in_degrees.begin()+index);
+        out_degrees.erase(out_degrees.begin()+index);
+        
+        return MG_SUCCESS;
     }
 
     

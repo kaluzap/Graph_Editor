@@ -21,7 +21,7 @@
 
 //List of commands used by readline
 std::vector<std::string> vocabulary{"exit", "resize", "matrix", "add_link", "info", "delete_link", "clean", "is_link", "new_graph",                 
-                                    "delete_graph", "ls", "help", "copy", "eigenvalues", "add_path", "delete_path", "show", "system", "save", "list_labels", "load", "line_graph", "change_class", "show_class", "add_node"};
+                                    "delete_graph", "ls", "help", "copy", "eigenvalues", "add_path", "delete_path", "show", "system", "save", "list_labels", "load", "line_graph", "change_class", "show_class", "add_node", "delete_node"};
 
 //List of derived graphs
 std::vector<std::string> graph_types{"graph_matrix", "graph_list"};
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
     
     //Presentation
     std::cout << "Interactive graph designer!" << std::endl;
-    std::cout << "23.12.2019 - Berlin - V2.00" << std::endl;
+    std::cout << "29.12.2019 - Berlin - V2.00" << std::endl;
     std::cout << "Use: help {command}" << std::endl;
     
 
@@ -101,6 +101,7 @@ int main(int argc, char **argv) {
             else if(commands[0] == "add_path"   ) g_add_path(commands, *the_graphs[actual_graph_name]);
             else if(commands[0] == "delete_path") g_delete_path(commands, *the_graphs[actual_graph_name]);
             else if(commands[0] == "add_node"   ) (*the_graphs[actual_graph_name]).add_node();
+            else if(commands[0] == "delete_node") g_delete_node(commands, *the_graphs[actual_graph_name]);
             
             else if(commands[0] == "info"       ) the_utility_tool.print_info(*the_graphs[actual_graph_name]);
             else if(commands[0] == "matrix"     ) the_utility_tool.print_matrix(*the_graphs[actual_graph_name]);

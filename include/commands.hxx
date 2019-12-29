@@ -23,6 +23,7 @@ void g_resize(std::vector<std::string> &commands, my_graphs::graph_base &IN);
 void g_add_link(std::vector<std::string> &commands, my_graphs::graph_base &IN);
 void g_delete_link(std::vector<std::string> &commands, my_graphs::graph_base &IN);
 void g_is_link(std::vector<std::string> &commands, my_graphs::graph_base &IN);
+void g_delete_node(std::vector<std::string> &commands, my_graphs::graph_base &IN);
 
 
 //Functions related to the system

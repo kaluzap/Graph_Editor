@@ -438,6 +438,32 @@ void g_delete_link(std::vector<std::string> &commands, my_graphs::graph_base &IN
     return;
 }
 
+void g_delete_node(std::vector<std::string> &commands, my_graphs::graph_base &IN)
+{
+    if( commands.size() != 2 ){
+        std::cout << "Wrong number of parameters!!!" << std::endl;
+        return;
+    }
+    
+    int i;
+    
+    try{
+        i = std::stoi(commands[1]);
+    }
+    catch(...){
+        std::cout << "Wrong integer!!!" << std::endl;
+        return;
+    }
+    
+    if(IN.delete_node(i) == my_graphs::MG_UNSUCCESS){
+        std::cout << "Not possible to delete that node! It does not exists already." << std::endl;
+    }
+    else{
+        std::cout << "The node " << i << " has been deleted." << std::endl;
+    }
+    return;
+}
+
 void g_add_link(std::vector<std::string> &commands, my_graphs::graph_base &IN)
 {
     if( (commands.size() != 3) && (commands.size() != 4) ){
