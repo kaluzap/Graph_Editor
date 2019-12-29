@@ -257,7 +257,7 @@ namespace my_graphs{
             DGEEV(&A.front(), &Wr.front(), &Wi.front(), in.nodes());
         
             eigenvalues.resize(in.nodes());
-            coeficients.resize(in.nodes());
+            coefficients.resize(in.nodes());
             
             for(int i=0; i<in.nodes(); i++) eigenvalues[i] = {Wr[i] , Wi[i]};
 
@@ -300,7 +300,7 @@ namespace my_graphs{
             }
         }
     
-        for(int k=0; k<eigenvalues.size(); k++) coeficients[k] = std::real(temp_coefficients[k]);
+        for(int k=0; k<eigenvalues.size(); k++) coefficients[k] = std::real(temp_coefficients[k]);
             
         return;
     }
