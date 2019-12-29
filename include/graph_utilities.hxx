@@ -31,7 +31,7 @@ namespace my_graphs{
             int set_seed(unsigned long);
             
             std::vector<std::complex<double>> eigenvalues;
-            std::vector<double> coeficients;
+            std::vector<double> coefficients;
             
         private:
             

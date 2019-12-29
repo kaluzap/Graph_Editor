@@ -257,9 +257,18 @@ void u_eigenvalues(std::vector<std::string> &commands, my_graphs::graph_base &A)
     }
     
     if(the_utility_tool.get_eigenvalues(A, commands[1][0]) == my_graphs::MG_SUCCESS){
+        
+        std::cout << "Eigenvalues" << std::endl;
+        
         for(int i=0; i < the_utility_tool.eigenvalues.size(); i++){
             std::cout << "(" << the_utility_tool.eigenvalues[i].real() << ", ";
             std::cout << the_utility_tool.eigenvalues[i].imag() << ") ";
+        }
+        std::cout << std::endl;
+
+        std::cout << "Coefficients" << std::endl;
+        for(int i=0; i < the_utility_tool.coefficients.size(); i++){
+            std::cout << the_utility_tool.coefficients[i] << " ";
         }
         std::cout << std::endl;
     }
