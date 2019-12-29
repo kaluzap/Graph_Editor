@@ -34,6 +34,9 @@ namespace my_graphs{
             std::vector<double> coeficients;
             
         private:
+            
+            void get_coefficients(void);
+            
             unsigned long seed;
             std::default_random_engine my_generator;
             std::uniform_real_distribution<double> my_distribution;

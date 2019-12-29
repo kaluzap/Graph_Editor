@@ -4,7 +4,7 @@
 #include <string>
 #include <algorithm>
 #include "graph_utilities.hxx"
-#include "graph.hxx"
+#include "graph_base.hxx"
 #include "DGEEV.hxx"
 
 namespace my_graphs{
@@ -274,7 +274,12 @@ namespace my_graphs{
     }
     
     
-    
+    //Vieta's formulas
+    void graph_utilities::get_coefficients(void)
+    {
+        return;
+    }
+
     int graph_utilities::line_graph(const graph_base &IN, graph_base &OUT)
     {
     
