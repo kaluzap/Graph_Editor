@@ -257,9 +257,18 @@ void u_eigenvalues(std::vector<std::string> &commands, my_graphs::graph_base &A)
     }
     
     if(the_utility_tool.get_eigenvalues(A, commands[1][0]) == my_graphs::MG_SUCCESS){
+        
+        std::cout << "Eigenvalues" << std::endl;
+        
         for(int i=0; i < the_utility_tool.eigenvalues.size(); i++){
             std::cout << "(" << the_utility_tool.eigenvalues[i].real() << ", ";
             std::cout << the_utility_tool.eigenvalues[i].imag() << ") ";
+        }
+        std::cout << std::endl;
+
+        std::cout << "Coefficients" << std::endl;
+        for(int i=0; i < the_utility_tool.coefficients.size(); i++){
+            std::cout << the_utility_tool.coefficients[i] << " ";
         }
         std::cout << std::endl;
     }
@@ -346,8 +355,9 @@ void s_delete_graph(std::vector<std::string> &commands, std::map<std::string, st
 
 void s_ls_graphs(std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A)
 {
+    std::cout << "Name" << "\t\t" << "nodes" << "\t" << "links" << std::endl;
     for(auto it = A.begin(); it != A.end(); it++){
-        std::cout << it->first << "\t\t" << (*(it->second)).nodes() /*<< "\t" << it->second.links()*/ << std::endl;
+        std::cout << it->first << "\t\t" << (*(it->second)).nodes() << "\t" << (*(it->second)).links() << std::endl;
     }
     return;
 }
@@ -434,6 +444,32 @@ void g_delete_link(std::vector<std::string> &commands, my_graphs::graph_base &IN
         }
     }
     
+    return;
+}
+
+void g_delete_node(std::vector<std::string> &commands, my_graphs::graph_base &IN)
+{
+    if( commands.size() != 2 ){
+        std::cout << "Wrong number of parameters!!!" << std::endl;
+        return;
+    }
+    
+    int i;
+    
+    try{
+        i = std::stoi(commands[1]);
+    }
+    catch(...){
+        std::cout << "Wrong integer!!!" << std::endl;
+        return;
+    }
+    
+    if(IN.delete_node(i) == my_graphs::MG_UNSUCCESS){
+        std::cout << "Not possible to delete that node! It does not exists already." << std::endl;
+    }
+    else{
+        std::cout << "The node " << i << " has been deleted." << std::endl;
+    }
     return;
 }
 

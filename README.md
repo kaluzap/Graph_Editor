@@ -11,11 +11,15 @@ The parameters between [] are optional.
 
 ***add_link*** *{i} {j} [X]*: add a link from node i to node j, and, from node j to node i if you add X.
 
+***add_node***: add a new node.
+
 ***add_path*** *{n1 n2 ... nN} [X]*: create a path through the nodes "n1,...nN". With X the path is created with double connections.
 
 ***clean***: remove all links of the graph.
 
 ***delete_link*** *{i} {j} [X]*: delete the existing link from node i to node j, and, from node j to node i if you add X.
+
+***delete_node** {i}*: delete the node i.
 
 ***delete_path** {n1 n2 ... nN} [X]*: delete a path through the nodes "n1,...nN". With X the path is deleted with double connections.
 

@@ -4,7 +4,7 @@
 #include <string>
 #include <algorithm>
 #include "graph_utilities.hxx"
-#include "graph.hxx"
+#include "graph_base.hxx"
 #include "DGEEV.hxx"
 
 namespace my_graphs{
@@ -259,10 +259,9 @@ namespace my_graphs{
             eigenvalues.resize(in.nodes());
             coeficients.resize(in.nodes());
             
-            for(int i=0; i<in.nodes(); i++){
-                eigenvalues[i] = {Wr[i] , Wi[i]};
-                coeficients[i] = 0.0;
-            }
+            for(int i=0; i<in.nodes(); i++) eigenvalues[i] = {Wr[i] , Wi[i]};
+
+            get_coefficients();
             
         }
         catch(std::bad_alloc &ba){
@@ -275,6 +274,37 @@ namespace my_graphs{
     
     
     
+    void graph_utilities::get_coefficients(void)
+    {
+        if(eigenvalues.size() == 0) return;
+        
+        std::vector<std::complex<double>> temp_coefficients(eigenvalues.size(), {0.0});
+    
+        temp_coefficients[0] = -eigenvalues[0];
+    
+        if(eigenvalues.size() > 1){
+   
+            temp_coefficients[1] = 1.0;
+    
+            std::vector<std::complex<double>> px(eigenvalues.size(), {0.0});
+            std::vector<std::complex<double>> pr(eigenvalues.size(), {0.0});
+    
+            for(int i=1; i < eigenvalues.size(); i++){
+        
+                for(int k=0; k<px.size()-1; k++) px[k+1] = temp_coefficients[k];
+            
+                pr = temp_coefficients;
+                for(int k=0; k<pr.size(); k++) pr[k] *= -eigenvalues[i];
+    
+                for(int k=0; k<pr.size(); k++) temp_coefficients[k] = px[k] + pr[k];
+            }
+        }
+    
+        for(int k=0; k<eigenvalues.size(); k++) coeficients[k] = std::real(temp_coefficients[k]);
+            
+        return;
+    }
+
     int graph_utilities::line_graph(const graph_base &IN, graph_base &OUT)
     {
     

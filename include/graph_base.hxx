@@ -22,6 +22,7 @@ namespace my_graphs{
             std::pair<int, int> get_link(const int k);
             */
             virtual int add_node() = 0;
+            virtual int delete_node(int index) = 0;
             /*bool insert_node(int in_i);
             bool delete_node(int in_i);
             */
