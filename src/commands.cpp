@@ -346,8 +346,9 @@ void s_delete_graph(std::vector<std::string> &commands, std::map<std::string, st
 
 void s_ls_graphs(std::map<std::string, std::unique_ptr<my_graphs::graph_base>> &A)
 {
+    std::cout << "Name" << "\t\t" << "nodes" << "\t" << "links" << std::endl;
     for(auto it = A.begin(); it != A.end(); it++){
-        std::cout << it->first << "\t\t" << (*(it->second)).nodes() /*<< "\t" << it->second.links()*/ << std::endl;
+        std::cout << it->first << "\t\t" << (*(it->second)).nodes() << "\t" << (*(it->second)).links() << std::endl;
     }
     return;
 }
