@@ -21,7 +21,8 @@ namespace my_graphs{
             int delete_link(int in_j, int in_i) override;
             bool is_link(int in_j, int in_i) const override;
             
-            int add_node() override {return false;};
+            int add_node() override;
+            int delete_node(int index) override;
             
             int degree(int in_i) const override {return in_degrees[in_i] + out_degrees[in_i];};
             int outdegree(int in_i) const override {return out_degrees[in_i];};
